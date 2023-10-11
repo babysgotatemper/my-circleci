@@ -1,11 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import {UserService} from "./user-service/user.service";
+import {HttpClientModule} from "@angular/common/http";
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
-    declarations: [AppComponent]
+    imports: [RouterTestingModule, HttpClientModule],
+    declarations: [AppComponent],
+    providers: [UserService],
   }));
 
   it('should create the app', () => {
@@ -17,13 +20,25 @@ describe('AppComponent', () => {
   it(`should have as title 'my-circleci'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('my-circleci');
+    expect(app.title).toEqual('List Of dummy users');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('my-circleci app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('List Of dummy users app is running!');
+  });
+
+  it("should create the app", () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it(`should have as title 'List Of dummy users'`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual("List Of dummy users");
   });
 });
