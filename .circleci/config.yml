@@ -28,4 +28,9 @@ jobs:
           key: ng-project-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
             - "node_modules"
-      - run: npm run test
+      - test:
+          parallelism: 10
+          steps:
+            - run: CI=true npm run test
+
+
